@@ -69,14 +69,12 @@
             var node = this;
             
             $.getJSON('soxRecord/devices',function(data) {
-                if (data === "error") {
-                    $("#error-wrapper").hide();
-                    return;
+                if (data != "error") {
+                    $("#error").hide();
+                    data.forEach(device => {
+                       $('#node-input-inputSource').append(`<option value="${device.number}">${device.name}</option>`);
+                    });
                 }
-                $("#error").hide();
-                data.forEach(device => {
-                    $('#node-input-inputSource').append(`<option value="${device.number}">${device.name}</option>`);
-                });
                 $('#node-input-inputSource').val(node.inputSource);
             });
             
