@@ -142,10 +142,10 @@ module.exports = function(RED) {
                     let options = msg.options.trim().split(" ");
                     let newArgArr = node.argArr.concat(options);
                     delete msg.options;
-                    node.info("spawn('sox',[" + newArgArr.toString() + "])");
+                    node.log("spawn('sox',[" + newArgArr.toString() + "])");
                     node.soxRecord = spawn("sox",newArgArr);
                 } else {
-                    node.info("spawn('sox',[" + node.argArr.toString() + "])");
+                    node.log("spawn('sox',[" + node.argArr.toString() + "])");
                     node.soxRecord = spawn("sox",node.argArr);
                 }
                 
